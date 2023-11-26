@@ -1,9 +1,3 @@
-goods = [
-    {'title': 'Ковер', 'price': 2000, 'color': 'green'},
-    {'title': 'Диван для отдыха', 'color': 'black'}
-]
-
-
 def field(dicts, *args):
     assert len(args) > 0
 
@@ -22,12 +16,12 @@ def field(dicts, *args):
                     res[i] = dict_.get(i)
             yield res
 
-if __name__ == 'main':
+
+if __name__ == '__main__':
     goods = [
         {'title': 'Ковер', 'price': 2000, 'color': 'green'},
         {'title': 'Диван для отдыха', 'color': 'black'}
     ]
     a = field(goods, 'title', 'price')  # должен выдавать {'title': 'Ковер', 'price': 2000}, {'title': 'Диван для отдыха', 'price': 5300}
-    print(next(a))
     print(next(a))
     print(next(a))

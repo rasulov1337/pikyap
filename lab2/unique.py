@@ -24,10 +24,9 @@ class Unique(object):
         return self
 
 
-# data = ['a', 'A', 'b', 'B', 'a', 'A', 'b', 'B']
-#
-# a = Unique(data, ignore_case=True)
-# print(next(a))
-# print(next(a))
-# print(next(a))
-# print(next(a))
+if __name__ == '__main__':
+    data = ['a', 'A', 'b', 'B', 'a', 'A', 'b', 'B']
+
+    a = Unique(data, ignore_case=True)
+    print(next(a))
+    print(next(a))

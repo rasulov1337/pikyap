@@ -12,7 +12,7 @@ def gen_random(num_count, begin, end):
         yield random.randint(begin, end)
 
 
-if __name__ == 'main':
+if __name__ == '__main__':
     a = gen_random(5, 1, 3)
     print(next(a))
     print(next(a))

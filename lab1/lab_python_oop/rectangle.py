@@ -5,19 +5,19 @@ from .color import Color
 class Rectangle(Figure):
     type = "Прямоугольник"
 
-    def __init__(self, width, length, color):
+    def __init__(self, width, height, color):
         self.width = width
-        self.length = length
+        self.height = height
         self.r_color = Color(color)
 
     def area(self):
-        return self.width * self.length
+        return self.width * self.height
 
     def __repr__(self):
         return '{} {} цвета с длиной стороны {}, шириной стороны {}, площадью {}.'.format(
             self.type,
             self.r_color._color,
-            self.length,
             self.width,
+            self.height,
             self.area()
         )

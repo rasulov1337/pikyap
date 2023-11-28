@@ -15,3 +15,4 @@ class Square(Rectangle):
             self.side,
             self.area()
         )
+

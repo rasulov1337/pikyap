@@ -21,3 +21,4 @@ class Rectangle(Figure):
             self.height,
             self.area()
         )
+

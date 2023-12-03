@@ -1,25 +1,33 @@
 <script>
-    export let taskText = "Do something"
-    let isStrikeThrough = false
+    export let taskText  // Переменная, которую нужно заполнить при создании экземпляра Task. Это текст задачи.
+    let taskDone = false  // Зачеркнутый ли стиль у текста нашей задачи? (применяется при нажатии на чекбокс).
 
-    let hideX = true
-    let deleteSelf = false
-
+    let hideX = true  // Вспомогательная переменная, отвечающая за появления кнопки удалить задачу рядом с задачей.
+    let deleteSelf = false  // Была ли удалена текущая задача?
 </script>
 
+<!-- Конструкция class:название_класса={true/false} позволяет применить определенный класс на какой-либо тег HTML.
+В данном случае мы используем его для скрытия задачи, если она была удалена.-->
 <main class:hidden={deleteSelf}>
+    <!-- Так как события on:hover нет в Svelte, то пришлось использовать on:mouseover и mouseout, что выполняет ту же самую работу.
+    Когда мышка над задачей, то справа от нее должен появиться крест, чтобы пользователь мог удалить ее. Поэтому при наведении делаем
+    hideX = false, а когда мышь не на элементе -- hideX = true. -->
     <div id="task-n-cross" on:mouseover={() => hideX = false} on:mouseout={() => hideX = true}>
         <div id="content-in-box">
-            <p class:strike={isStrikeThrough}>{taskText}</p>
-            <input type="checkbox" on:click={() => isStrikeThrough = !isStrikeThrough}>
+            <!-- Если задача выполнена, то применяем класс strike к <p> -->
+            <p class:strike={taskDone}>{taskText}</p>
+            <!-- Если на чекбокс нажали, то задача выполнена => taskDone = true. Если снова нажали, то отменяем действие. 
+            Для обработки этого события используем конструкцию on:событие-->
+            <input type="checkbox" on:click={() => taskDone = !taskDone}>
         </div>
+        <!--Создаем button, внутри которой находится img. Для обработки события on:click используем button (Иначе нельзя).-->
         <button id="transparent-btn" class:hidden={hideX} on:click={() => deleteSelf = true}>
             <img id="x-img" src="./public/x-lg.svg" alt="delete task">
         </button>
     </div>
 </main>
 
-
+<!--Стили для этого компонента-->
 <style>
     #content-in-box {
         display: flex;
@@ -84,6 +92,4 @@
         align-items: center;
         position: relative;
     }
-
-
 </style>
